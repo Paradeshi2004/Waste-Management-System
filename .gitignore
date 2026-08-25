@@ -1,0 +1,37 @@
+# Python virtual environment
+venv/
+**/venv/
+
+# Python cache
+__pycache__/
+**/__pycache__/
+*.pyc
+
+# macOS
+.DS_Store
+**/.DS_Store
+
+# Backups
+backups/
+**/backups/
+
+# Environment / secrets
+.env
+.env.*
+!.env.example
+
+# Logs
+*.log
+
+# IDE files
+.vscode/
+.idea/
+
+# Temporary files
+*.tmp
+*.swp
+
+# Project backup files
+**/*-backup.php
+**/*-backup.sql
+Waste-Management-AI/main-backup.py
