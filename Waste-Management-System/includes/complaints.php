@@ -93,8 +93,15 @@ function submitComplaint(array $data, ?array $file = null): int {
     }
 
     // AI classification result
-    $aiCategory = $data['ai_category'] ?? null;
-    $aiConfidence = $data['ai_confidence'] ?? null;
+
+    $aiCategory = !empty($data['ai_category'])
+        ? trim($data['ai_category'])
+        : null;
+
+    $aiConfidence = isset($data['ai_confidence'])
+        && $data['ai_confidence'] !== ''
+        ? (float) $data['ai_confidence']
+        : null;
 
     $stmt = $db->prepare(
         "INSERT INTO complaints (

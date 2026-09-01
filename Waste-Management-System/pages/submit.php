@@ -24,9 +24,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         'priority'    => $_POST['priority'] ?? 'medium',
 
         // AI classification
-        'ai_category'   => $_POST['ai_category'] ?? null,
-        'ai_confidence' => $_POST['ai_confidence'] ?? null,
-    ];
+
+        'ai_category' => !empty($_POST['ai_category'])
+            ? trim($_POST['ai_category'])
+            : null,
+
+        'ai_confidence' => isset($_POST['ai_confidence'])
+            && $_POST['ai_confidence'] !== ''
+            ? (float) $_POST['ai_confidence']
+            : null,
+        ];
 
     if (empty($data['title']) || empty($data['description']) || empty($data['location'])) {
         $error = "Title, description, and location are required.";
